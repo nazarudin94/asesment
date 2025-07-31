@@ -1,15 +1,12 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 export default function Page() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
       const res = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
         method: "POST",
@@ -22,8 +19,6 @@ export default function Page() {
       if (res.ok) {
         localStorage.setItem("access_token", data.access_token);
         router.push("/home");
-      } else {
-        alert("Login gagal: " + (data.message || "Cek email/password"));
       }
     } catch (err) {
       console.error("Terjadi kesalahan:", err);
