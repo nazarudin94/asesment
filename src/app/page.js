@@ -18,7 +18,7 @@ export default function Page() {
       const data = await res.json();
       if (res.ok) {
         localStorage.setItem("access_token", data.access_token);
-        router.push("/home");
+        router.push("/product");
       }
     } catch (err) {
       console.error("Terjadi kesalahan:", err);
